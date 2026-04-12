@@ -66,12 +66,12 @@
 // #### Private Type(s) ########################################################
 // #############################################################################
 
-typedef struct RTC_Instance_Context
+typedef struct RTC_InstanceContext
 {
     time_t time;
     struct timeval timeval;
     RTC_Timestamp_t Timestamp;
-} RTC_Instance_Context_t;
+} RTC_InstanceContext_t;
 
 // #############################################################################
 // #### Private Method(s) Prototype ############################################
@@ -322,7 +322,7 @@ RTC_Status_t RTC_Instance_Initialize( RTC_Instance_t * RTC_Instance )
         if ( RTC_Instance->Context == NULL )
         {
             RAM_Status_t RAM_Status = RAM_Status_Error;
-            if ( ( RAM_Status = RAM_Allocate( RAM_1, ( RAM_Reference_t * ) &RTC_Instance->Context, UTIL_SizeOf( RTC_Instance_Context_t ) ) ) != RAM_Status_Success )
+            if ( ( RAM_Status = RAM_Allocate( RAM_1, ( RAM_Reference_t * ) &RTC_Instance->Context, UTIL_SizeOf( RTC_InstanceContext_t ) ) ) != RAM_Status_Success )
             {
                 RTC_Status = RTC_Status_Error;
                 break;
